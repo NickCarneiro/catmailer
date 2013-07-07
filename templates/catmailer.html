@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+    <title>Catmailer</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/catmailer.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="span6 offset3 spanrow">
+            <div class="box">
+                <div id="signup-form">
+            <h1>Get cats in your inbox!</h1>
+                <img src="static/img/catbox.jpg">
+            <div>
+                <div class="lead explanation">
+                    Enter your email address to receive one daily email with three cats.
+                </div>
+                <div id="error-message-container">
+                    &nbsp;
+                </div>
+            </div>
+                <input id="email-input" class="input input-large" type="text" placeholder="Email">
+                <button id="submit-button" class="btn btn-large btn-primary">Sign up</button>
+            </div>
+
+                <div id="success-container" style="display: none;">
+                    <h1>Mee-yow</h1>
+                    <img src="static/img/pimpcat.jpg">
+                    <h4>
+                        The cats are on their way!
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="static/js/catmailer.js"></script>
+</body>
+</html>

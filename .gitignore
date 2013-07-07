@@ -33,3 +33,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# contains database paths and secrets
+local.py
+*.db
+.idea/*
+*.iml
