@@ -55,8 +55,9 @@ def signup():
 @app.route('/unsubscribe/<email_address>')
 def unsubscribe(email_address):
     try:
-        email_obj = Email(email_address)
-        db.session.delete(email_obj)
+        unsub_email = Email.query.filter_by(email_address=email_address).first()
+        db.session.delete(unsub_email)
+        db.session.commit()
         return 'Succesfully unsubscribed ' + strip_html(email_address)
     except Exception as e:
         app.logger.error(e)
