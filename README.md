@@ -16,3 +16,18 @@ Sign up for cats in your inbox.
 * Copy local.py.default to local.py and fill in the appropriate hosts and passwords
 * Configure your webserver to run catmailer.py
 * Set up a cronjob to run send_cats.py
+
+
+## Apache config
+
+        <VirtualHost *:80>
+        ServerName cats.trillworks.com
+        WSGIDaemonProcess catmailer python-path=/path/to/catmailer:/home/you/.virtualenvs/catmailer/lib/python2.7/site-packages user=www-data group=www-data threads=5
+        WSGIScriptAlias / /path/to/catmailer/catmailer.wsgi
+        <Directory /path/to/catmailer>
+                WSGIProcessGroup catmailer
+                WSGIApplicationGroup %{GLOBAL}
+                Order deny,allow
+                Allow from all
+            </Directory>
+        </VirtualHost>
