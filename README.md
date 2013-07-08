@@ -4,7 +4,7 @@ catmailer
 Sign up for cats in your inbox.
 
 ## Installation
-* Install dependencies: postfix, mysql, python-dev, mysql-python
+* Install dependencies: postfix, mysql, python-dev
 * Download the source, set up a virtualenv, and "workon" it.
 * Run pip install -r requirements.always
 * Create a database for catmailer
