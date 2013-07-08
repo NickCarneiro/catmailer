@@ -9,8 +9,8 @@ Sign up for cats in your inbox
 * Install postfix/sendmail and MySQL
 * Create a database for catmailer
 * Open a python REPL and do
-```
-from catmailer import db
-db.create_all()
-```
+
+        from catmailer import db
+        db.create_all()
+
 * Copy local.py.default to local.py and fill in the appropriate hosts and passwords
