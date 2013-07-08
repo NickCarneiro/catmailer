@@ -19,6 +19,8 @@ http://cats.trillworks.com
 * Configure your webserver to run catmailer.py
 * Set up a cronjob to run send_cats.py
 
+## Background
+I wanted to learn Flask, so I built this. It's more interesting than a to-do app.
 
 ## Apache config
 
