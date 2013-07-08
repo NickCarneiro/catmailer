@@ -26,20 +26,15 @@ def send_cats():
     for cat_lover in cat_lovers:
         print 'sending to ' + cat_lover.email_address
         body_html = build_email_html(cat_images, cat_lover.email_address)
-        headers = ['from: catmailer@trillworks.com'
-                   'subject: Here are your daily cats',
-                   'to: ' + cat_lover.email_address,
-                   'mime-version: 1.0',
-                   'content-type: text/html'
-        ]
-        message_string = '\r\n'.join(headers) + '\r\n\r\n' + body_html
-        session = smtplib.SMTP('smtp.gmail.com', 587)
+        subject = 'Your daily cats'
+        message = """Content-Type: text/html\nFrom: %s\nTo: %s\nSubject: %s\n\n%s
+
+            """ % ('Trillworks Daily Cats', ", ".join([cat_lover.email_address]), subject, body_html)
+        session = smtplib.SMTP('smtp.gmail.com:587')
         session.ehlo()
         session.starttls()
-        session.ehlo()
         session.login(GMAIL_USER, GMAIL_PASSWORD)
-        session.ehlo()
-        session.sendmail('catmailer@trillworks.com', cat_lover.email_address, headers, message_string)
+        session.sendmail('catmailer@trillworks.com', [cat_lover.email_address], message)
         session.quit()
 
 
@@ -51,7 +46,8 @@ def build_email_html(cat_images, recipient_email):
     for cat in cat_images:
         html += cat + '<br>'
     unsubscribe_url = 'http://' + HOSTNAME + '/unsubscribe?email=' + recipient_email
-    html += '<a href="' + unsubscribe_url + '" style="color: #787878">Click to unsubscribe</a>'
+    html += '<br><br><a href="' + unsubscribe_url + \
+            '" style="font-size: 12px; color: #787878;">Click to unsubscribe</a>'
     html += '</body></html>'
     return html
 
