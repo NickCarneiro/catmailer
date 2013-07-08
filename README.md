@@ -14,3 +14,5 @@ from catmailer import db
 db.create_all()
 ```
 * Copy local.py.default to local.py and fill in the appropriate hosts and passwords
+* Configure your webserver to run catmailer.py
+* Set up a cronjob to run send_cats.py

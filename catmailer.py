@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify, make_response
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from local import SQLALCHEMY_URL
-from utils import return_json
+from utils import return_json, strip_html
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_URL
@@ -48,7 +48,16 @@ def signup():
 
     else:
         return return_json({'error': 'Please enter a valid email address.'})
-
+@app.route('/unsubscribe/<email_address>')
+def unsubscribe(email_address):
+    try:
+        email_obj = Email(email_address)
+        db.session.delete(email_obj)
+        return 'Succesfully unsubscribed ' + strip_html(email_address)
+    except Exception as e:
+        app.logger.error(e)
+        return 'Something went wrong trying to unsubscribe '+ strip_html(email_address) \
+               + '. Try again later.'
 if __name__ == "__main__":
     app.debug = True
     app.run()
