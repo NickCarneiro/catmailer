@@ -1,7 +1,9 @@
 catmailer
 =========
+Enter your email and get cats in your inbox daily.
 
-Sign up for cats in your inbox.
+## Live Demo
+http://cats.trillworks.com
 
 ## Installation
 * Install dependencies: postfix, mysql, python-dev
