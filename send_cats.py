@@ -45,7 +45,7 @@ def build_email_html(cat_images, recipient_email):
            '<body><h3>Enjoy your daily cats!</h3>'
     for cat in cat_images:
         html += cat + '<br>'
-    unsubscribe_url = 'http://' + HOSTNAME + '/unsubscribe?email=' + recipient_email
+    unsubscribe_url = 'http://' + HOSTNAME + '/unsubscribe/' + recipient_email
     html += '<br><br><a href="' + unsubscribe_url + \
             '" style="font-size: 12px; color: #787878;">Click to unsubscribe</a>'
     html += '</body></html>'

@@ -15,9 +15,11 @@ class Email(db.Model):
     email_address = db.Column(db.String(255), unique=True)
     signup_date = db.Column(db.DateTime)
     active = db.Column(db.Integer, default=1)
+
     def __init__(self, email_address):
         self.email_address = email_address
         self.signup_date = datetime.now()
+
     def __repr__(self):
         return '<Email %r>' % self.email_address
 
@@ -48,6 +50,8 @@ def signup():
 
     else:
         return return_json({'error': 'Please enter a valid email address.'})
+
+
 @app.route('/unsubscribe/<email_address>')
 def unsubscribe(email_address):
     try:
@@ -56,8 +60,10 @@ def unsubscribe(email_address):
         return 'Succesfully unsubscribed ' + strip_html(email_address)
     except Exception as e:
         app.logger.error(e)
-        return 'Something went wrong trying to unsubscribe '+ strip_html(email_address) \
+        return 'Something went wrong trying to unsubscribe ' + strip_html(email_address) \
                + '. Try again later.'
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
