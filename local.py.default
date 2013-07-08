@@ -1,3 +1,7 @@
+# copy this to local.py and set the values for your environment.
+# (@contextjunkie showed me this)
 SQLALCHEMY_URL = 'mysql://user:passw0rd/databasename'
 HOSTNAME = 'localhost'
 SENDMAIL_HOST = 'localhost'
+#used for wsgi
+APP_PATH='/path/to/catmailer'
